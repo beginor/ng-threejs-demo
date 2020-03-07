@@ -32,9 +32,9 @@ describe('AboutComponent', () => {
     });
 
     // should display a header
-    it('should display header with "Angular App Seed"', () => {
+    it('should display header with "Three.js demos"', () => {
         const h1 = targetEl.querySelector('h1');
         expect(h1).toBeTruthy();
-        expect(h1.textContent).toContain('Angular App Seed');
+        expect(h1.textContent).toContain('Three.js demos');
     });
 });

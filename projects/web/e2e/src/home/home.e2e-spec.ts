@@ -1,6 +1,6 @@
 import { HomePage } from './home.po';
 
-describe('ng-seed Home', () => {
+describe('ng-threejs-demo Home', () => {
 
     let page: HomePage;
 

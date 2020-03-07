@@ -29,9 +29,9 @@ describe('AppComponent', () => {
         expect(target).toBeTruthy();
     }));
 
-    it(`should has a navbar-brand 'Angular App Seed'`, async(() => {
+    it(`should has a navbar-brand 'Three.js demos'`, async(() => {
         expect(targetEl.querySelector('a.navbar-brand').textContent)
-            .toContain('Angular App Seed');
+            .toContain('Three.js demos');
     }));
 
 });
