@@ -7,6 +7,15 @@
     @include full-width-height();
     @include no-margin-padding();
     overflow: hidden;
+
+    .side-menu {
+      width: 280px;
+    }
+
+    .gl-view {
+      flex: 1;
+      position: relative;
+    }
   }
 
 }
