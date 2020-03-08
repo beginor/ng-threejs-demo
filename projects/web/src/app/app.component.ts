@@ -40,8 +40,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         );
         const controls = new OrbitControls(camera, container);
         const renderer = new WebGLRenderer({
-            premultipliedAlpha: false
+            premultipliedAlpha: false,
+            antialias: true
         });
+        // renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(
             container.clientWidth,
             container.clientHeight
@@ -65,7 +67,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
                     container.clientWidth,
                     container.clientHeight
                 );
-            }, 1000);
+            }, 300);
         });
         this.renderSvc.scene = scene;
         this.renderSvc.camera = camera;
