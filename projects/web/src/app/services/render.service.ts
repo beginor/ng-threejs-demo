@@ -33,13 +33,13 @@ export class RenderService {
 
     public update(time: number): void {
         for (const obj of this.updatableObjects) {
-            obj.update(this.scene, this.camera, time);
+            obj.update(time);
         }
     }
 }
 
 export interface Updatable {
 
-    update(scene: Scene, camera: Camera, time: number): void;
+    update(time: number): void;
 
 }

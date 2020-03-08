@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         this.renderSvc.scene.remove(this.cube);
     }
 
-    public update(scene: Scene, camera: Camera, time: number): void {
+    public update(time: number): void {
         const angle = (time / 1000) / Math.PI;
         this.cube.rotation.x = angle;
         this.cube.rotation.y = angle;
