@@ -14,6 +14,11 @@ const routes: Routes = [
         path: 'about',
         // tslint:disable-next-line: max-line-length
         loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+    },
+    {
+        path: 'glcube',
+        // tslint:disable-next-line: max-line-length
+        loadChildren: () => import('./demos/glcube/glcube.module').then(m => m.GlcubeModule)
     }
 ];
 
