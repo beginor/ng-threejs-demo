@@ -10,7 +10,7 @@ import { RenderService, Updatable } from '../../../services/render.service';
 })
 export class HomeComponent implements OnInit, OnDestroy, Updatable {
 
-    private cube: Mesh;
+    private cube!: Mesh;
 
     constructor(
         private renderSvc: RenderService

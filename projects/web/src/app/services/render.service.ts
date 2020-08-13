@@ -13,10 +13,10 @@ export class RenderService {
 
     private updatableObjects: Updatable[] = [];
 
-    public scene: Scene;
-    public camera: PerspectiveCamera;
-    public renderer: WebGLRenderer;
-    public controls: OrbitControls;
+    public scene!: Scene;
+    public camera!: PerspectiveCamera;
+    public renderer!: WebGLRenderer;
+    public controls!: OrbitControls;
 
     constructor() { }
 

@@ -17,12 +17,12 @@ import { RenderService } from './services/render.service';
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
 
-    private stats: Stats;
+    private stats!: Stats;
 
     public collapsed = true;
 
     @ViewChild('glView')
-    public glView: ElementRef<HTMLDivElement>;
+    public glView!: ElementRef<HTMLDivElement>;
 
     constructor(
         private renderSvc: RenderService
