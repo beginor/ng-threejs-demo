@@ -21,7 +21,10 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
     };
     private shader!: ShaderMaterial;
 
-    public size = 1;
+    public minSize = 0;
+    public maxSize = 100;
+    public step = 1;
+    public size = 50;
     public wireframe = false;
 
     constructor(
@@ -48,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
               uniform float time;
               void main() {
                 float pr = (vNormal.x + 1.0) / 2.0;
-                float pg = (vNormal.y + 1.0) / 2.0;
+                float pg = time / 2.0;
                 float pb = (vNormal.z + 1.0) / 2.0;
                 gl_FragColor=vec4(pr, pg, pb, 1.0);
               }
