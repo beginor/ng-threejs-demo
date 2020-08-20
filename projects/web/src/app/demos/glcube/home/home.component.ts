@@ -17,7 +17,10 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
     ) { }
 
     public ngOnInit(): void {
+        this.renderSvc.camera.position.x = 0;
+        this.renderSvc.camera.position.y = 0;
         this.renderSvc.camera.position.z = 5;
+        this.renderSvc.camera.lookAt(0, 0, 0);
         const geometry = new BoxGeometry();
         const material = new MeshBasicMaterial({
             color: 0x00ff00
