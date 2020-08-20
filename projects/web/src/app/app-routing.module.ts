@@ -16,8 +16,11 @@ const routes: Routes = [
     },
     {
         path: 'glcube',
-        // tslint:disable-next-line: max-line-length
         loadChildren: () => import('./demos/glcube/glcube.module').then(m => m.GlcubeModule)
+    },
+    {
+        path: 'shader',
+        loadChildren: () => import('./demos/shader/shader.module').then(m => m.ShaderModule)
     }
 ];
 // tslint:enable: max-line-length
