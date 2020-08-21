@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
     public maxSize = 100;
     public step = 1;
     public size = 50;
-    public wireframe = false;
+    public wireframe = true;
+    public useTime = true;
 
     constructor(
         private renderSvc: RenderService
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
               uniform float time;
               void main() {
                 float pr = (vNormal.x + 1.0) / 2.0;
-                float pg = time / 2.0;
+                float pg = (vNormal.y + 1.0) / 2.0;
                 float pb = (vNormal.z + 1.0) / 2.0;
                 gl_FragColor=vec4(pr, pg, pb, 1.0);
               }
@@ -72,7 +73,13 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
     }
 
     public update(time: number): void {
-        const t = Math.sin((this.size - 50) / 50.0) + 1;
+        let t = 1.0;
+        if (this.useTime) {
+            t = Math.sin(time % 2000.0 / 2000.0 * Math.PI) + 1;
+        }
+        else {
+            t = Math.sin((this.size - 50) / 50.0) + 1;
+        }
         this.uniforms.time.value = t;
         this.shader.wireframe = this.wireframe;
     }
