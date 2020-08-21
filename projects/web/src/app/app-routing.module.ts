@@ -21,6 +21,10 @@ const routes: Routes = [
     {
         path: 'shader',
         loadChildren: () => import('./demos/shader/shader.module').then(m => m.ShaderModule)
+    },
+    {
+        path: 'shader02',
+        loadChildren: () => import('./demos/shader02/shader02.module').then(m => m.Shader02Module)
     }
 ];
 // tslint:enable: max-line-length
