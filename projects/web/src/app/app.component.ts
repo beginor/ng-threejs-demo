@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 import {
-    Scene, PerspectiveCamera, WebGL1Renderer, Color
+    Scene, PerspectiveCamera, WebGLRenderer, Color
 } from 'three';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -39,7 +39,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
             10000
         );
         const controls = new OrbitControls(camera, container);
-        const renderer = new WebGL1Renderer({
+        const renderer = new WebGLRenderer({
             premultipliedAlpha: false,
             antialias: true,
         });
