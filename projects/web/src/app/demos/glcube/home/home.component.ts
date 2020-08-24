@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Mesh, BoxGeometry, MeshBasicMaterial, Scene, Camera } from 'three';
+import {
+    Mesh, BoxGeometry, MeshBasicMaterial, AxesHelper
+} from 'three';
 
 import { RenderService, Updatable } from '../../../services/render.service';
 
@@ -11,6 +13,7 @@ import { RenderService, Updatable } from '../../../services/render.service';
 export class HomeComponent implements OnInit, OnDestroy, Updatable {
 
     private cube!: Mesh;
+    private axesHelper!: AxesHelper;
 
     constructor(
         private renderSvc: RenderService
@@ -27,12 +30,15 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         });
         this.cube = new Mesh(geometry, material);
         this.renderSvc.scene.add(this.cube);
+        this.axesHelper = new AxesHelper(3);
+        this.renderSvc.scene.add(this.axesHelper);
         this.renderSvc.addUpdatable(this);
     }
 
     public ngOnDestroy(): void {
         this.renderSvc.removeUpdatable(this);
         this.renderSvc.scene.remove(this.cube);
+        this.renderSvc.scene.remove(this.axesHelper);
     }
 
     public update(time: number): void {
