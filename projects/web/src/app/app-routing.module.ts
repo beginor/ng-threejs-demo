@@ -19,8 +19,8 @@ const routes: Routes = [
         loadChildren: () => import('./demos/glcube/glcube.module').then(m => m.GlcubeModule)
     },
     {
-        path: 'shader',
-        loadChildren: () => import('./demos/shader/shader.module').then(m => m.ShaderModule)
+        path: 'shader01',
+        loadChildren: () => import('./demos/shader01/shader01.module').then(m => m.ShaderModule)
     },
     {
         path: 'shader02',

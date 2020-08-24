@@ -6,7 +6,7 @@ import {
 import { RenderService, Updatable } from '../../../services/render.service';
 
 @Component({
-    selector: 'app-shader-home',
+    selector: 'app-shader01-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
