@@ -6,6 +6,7 @@ import {
 } from 'three';
 
 import { Updatable, RenderService } from '../../../services/render.service';
+import { vert, frag } from './shaders';
 
 @Component({
     selector: 'app-shader02-home',
@@ -33,9 +34,9 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
 
     public ngOnInit(): void {
         // 初始化 camera 位置
-        this.render.camera.position.y = 5;
-        this.render.camera.position.z = 5;
-        this.render.camera.position.x = 5;
+        this.render.camera.position.y = 2;
+        this.render.camera.position.z = 2;
+        this.render.camera.position.x = 2;
         this.render.camera.lookAt(0, 0, 0);
         // 添加坐标系辅助
         this.axesHelper = new AxesHelper(10);
@@ -43,32 +44,8 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         const plane = new PlaneGeometry(1, 1, 32, 32);
         const shader = new ShaderMaterial({
             uniforms: this.uniforms,
-            vertexShader: [
-                // 'uniform float currTime;',
-                // '',
-                'varying float distance;',
-                '',
-                'void main() {',
-                '    distance = sqrt(position.x * position.x + position.y * position.y);',
-                '    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-                '}'
-            ].join('\n'),
-            fragmentShader: [
-                'uniform float currTime;',
-                'uniform vec3 ringColor;',
-                'uniform float ringCount;',
-                'uniform float ringFreq;',
-                '',
-                'varying float distance;',
-                '',
-                'const float PI = 3.141592653589793;',
-                '',
-                'void main() {',
-                '    float intensity = clamp(cos(distance * PI), 0.0, 1.0)',
-                '        * clamp(cos(2.0 * PI * (distance * 2.0 * ringCount - ringFreq * currTime)), 0.0, 1.0);',
-                '    gl_FragColor = vec4(ringColor * intensity, intensity);',
-                '}'
-            ].join('\n'),
+            vertexShader: vert,
+            fragmentShader: frag,
             side: DoubleSide,
             wireframe: false,
             opacity: 0.8
