@@ -58,9 +58,8 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
                 'const float FREQ = 1.0;',
                 '',
                 'void main() {',
-                '    float l = distance;',
-                '    float intensity = clamp(cos(l * PI), 0.0, 1.0)',
-                '        * clamp(cos(2.0 * PI * (l * 2.0 * N_RINGS - FREQ * currTime)), 0.0, 1.0);',
+                '    float intensity = clamp(cos(distance * PI), 0.0, 1.0)',
+                '        * clamp(cos(2.0 * PI * (distance * 2.0 * N_RINGS - FREQ * currTime)), 0.0, 1.0);',
                 '    gl_FragColor = vec4(COLOR * intensity, intensity);',
                 '}'
             ].join('\n'),
