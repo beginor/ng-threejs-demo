@@ -3,7 +3,9 @@ import {
     Mesh, SphereGeometry, ShaderMaterial, MeshNormalMaterial, AxesHelper,
     IUniform
 } from 'three';
+
 import { RenderService, Updatable } from '../../../services/render.service';
+import { uniforms, vertexShader, fragmentShader } from './shaders';
 
 @Component({
     selector: 'app-shader01-home',
@@ -14,11 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
 
     private mesh!: Mesh;
     private axesHelper!: AxesHelper;
-    private uniforms: { [uniform: string]: IUniform; } = {
-        time: {
-            value: 1.0
-        }
-    };
+
     private shader!: ShaderMaterial;
 
     public minSize = 0;
@@ -38,25 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         this.renderSvc.camera.lookAt(0, 0, 0);
         const geometry = new SphereGeometry(10, 30, 30);
         this.shader = new ShaderMaterial({
-            uniforms: this.uniforms,
-            vertexShader: `
-              varying vec3 vNormal;
-              uniform float time;
-              void main() {
-                vNormal = normal;
-                gl_Position = projectionMatrix * modelViewMatrix * vec4( position.x, position.y * time, position.z, 1.0 );
-              }
-            `,
-            fragmentShader: `
-              varying vec3 vNormal;
-              uniform float time;
-              void main() {
-                float pr = (vNormal.x + 1.0) / 2.0;
-                float pg = (vNormal.y + 1.0) / 2.0;
-                float pb = (vNormal.z + 1.0) / 2.0;
-                gl_FragColor=vec4(pr, pg, pb, 1.0);
-              }
-            `,
+            uniforms, vertexShader, fragmentShader,
             wireframe: this.wireframe
         });
         this.mesh = new Mesh(geometry, [this.shader, new MeshNormalMaterial()]);
@@ -80,7 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         else {
             t = Math.sin((this.size - 50) / 50.0) + 1;
         }
-        this.uniforms.time.value = t;
+        uniforms.time.value = t;
         this.shader.wireframe = this.wireframe;
     }
 

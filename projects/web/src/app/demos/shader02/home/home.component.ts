@@ -6,7 +6,7 @@ import {
 } from 'three';
 
 import { Updatable, RenderService } from '../../../services/render.service';
-import { vert, frag } from './shaders';
+import { uniforms, vertexShader, fragmentShader } from './shaders';
 
 @Component({
     selector: 'app-shader02-home',
@@ -17,12 +17,6 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
 
     private mesh!: Mesh;
     private axesHelper!: AxesHelper;
-    private uniforms = {
-        currTime: { value: 0.0 },
-        ringColor: { value: [1.0, 0.0, 0.0 ] },
-        ringCount: { value: 3.0 },
-        ringFreq: { value: 1.0 }
-    };
 
     public color = '#ff0000';
     public count = 3;
@@ -43,9 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         this.render.scene.add(this.axesHelper);
         const plane = new PlaneGeometry(1, 1, 32, 32);
         const shader = new ShaderMaterial({
-            uniforms: this.uniforms,
-            vertexShader: vert,
-            fragmentShader: frag,
+            uniforms, vertexShader, fragmentShader,
             side: DoubleSide,
             wireframe: false,
             opacity: 0.8
@@ -66,11 +58,11 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
     }
 
     public update(time: number): void {
-        this.uniforms.currTime.value = time / 1000.0;
+        uniforms.currTime.value = time / 1000.0;
         const color = new Color(this.color);
-        this.uniforms.ringColor.value = color.toArray();
-        this.uniforms.ringCount.value = this.count;
-        this.uniforms.ringFreq.value = this.freq;
+        uniforms.ringColor.value = color.toArray();
+        uniforms.ringCount.value = this.count;
+        uniforms.ringFreq.value = this.freq;
     }
 
 }

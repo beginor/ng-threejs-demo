@@ -1,4 +1,11 @@
-export const vert = /* glsl */`
+export const uniforms = {
+    currTime: { value: 0.0 },
+    ringColor: { value: [1.0, 0.0, 0.0 ] },
+    ringCount: { value: 3.0 },
+    ringFreq: { value: 1.0 }
+};
+
+export const vertexShader = /* glsl */`
 uniform float currTime;
 
 varying float distance;
@@ -8,7 +15,8 @@ void main() {
     gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 }
 `;
-export const frag = /* glsl */`
+
+export const fragmentShader = /* glsl */`
 uniform float currTime;
 uniform vec3 ringColor;
 uniform float ringCount;
