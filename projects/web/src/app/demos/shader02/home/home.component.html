@@ -1,1 +1,22 @@
-<p>home works!</p>
+<div class="card m-2">
+  <div class="card-header">
+    Shader Plane
+  </div>
+  <form class="card-body">
+    <div class="form-group">
+      <label for="color">Color</label>
+      <input class="form-control" type="color" id="color" name="color"
+        [(ngModel)]="color">
+    </div>
+    <div class="form-group">
+      <label for="range">Ring Count:</label>
+      <input class="form-control-range" type="range" id="count" name="count"
+        [min]="1" [step]="1" [max]="10" [(ngModel)]="count">
+    </div>
+    <div class="form-group">
+      <label for="range">Frequence:</label>
+      <input class="form-control-range" type="range" id="frequence" name="frequence"
+        [min]="1" [step]="1" [max]="10" [(ngModel)]="freq">
+    </div>
+  </form>
+</div>
