@@ -40,7 +40,8 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
             uniforms, vertexShader, fragmentShader,
             side: DoubleSide,
             wireframe: false,
-            opacity: 0.8
+            opacity: 0.8,
+            transparent: true
         });
         // const gl = this.render.renderer.getContext();
         // gl.enable(gl.BLEND);
