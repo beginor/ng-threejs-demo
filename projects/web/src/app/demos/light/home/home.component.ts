@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import {
     Mesh, PlaneGeometry, MeshLambertMaterial, BoxGeometry, SphereGeometry,
-    SpotLight, SpotLightHelper, AxesHelper, Object3D, Color, AmbientLight, PlaneBufferGeometry, MeshPhongMaterial
+    SpotLight, SpotLightHelper, AxesHelper, Object3D, Color, AmbientLight,
+    PlaneBufferGeometry, MeshPhongMaterial
 } from 'three';
 
 import { RenderService, Updatable } from '../../../services/render.service';
@@ -71,7 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         scene.add(ambient);
         //
         const spotlight = new SpotLight(0xffffff, 1);
-        spotlight.position.set(-20, 30, 5);
+        spotlight.position.set(-20, 30, 0);
         spotlight.castShadow = true;
         spotlight.intensity = 1;
         spotlight.distance = 60;
@@ -121,6 +122,9 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         sphere.position.x = Math.cos(angle) * 20;
         sphere.position.z = Math.sin(angle) * 20;
         //
+        const spotlight = this.spotLight;
+        spotlight.position.x = Math.sin(angle) * 20;
+        spotlight.position.z = Math.cos(angle) * 10;
         this.spotLightHelper.update();
     }
 
