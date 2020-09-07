@@ -1,2 +1,26 @@
-<p>app-demos-lighthome works!</p>
-{{shadowEnabled}}
+<div class="card m-2">
+  <div class="card-header">Light</div>
+  <form class="card-body">
+    <div class="form-group">
+      <label for="color">Color</label>
+      <input class="form-control" id="color" type="color" value="#ffffff" #light
+        (change)="setLightColor(light)">
+    </div>
+    <div class="form-group">
+      <label for="angle">Angle:</label>
+      <input class="form-control-range" id="angle" type="range" #angle
+        [min]="15" [step]="1" [max]="45" (change)="setLightAngle(angle)">
+    </div>
+    <div class="form-group">
+      <label for="penumbra">Penumbra:</label>
+      <input class="form-control-range" id="penumbra" type="range" #penumbra
+        [min]="0" [step]="1" [max]="100" (change)="setLightPenumbra(penumbra)">
+    </div>
+    <div class="form-group">
+      <label for="decay">Decay:</label>
+      <input class="form-control-range" id="decay" type="range" #decay
+        [min]="0" [step]="1" [max]="100" (change)="setLightDecay(decay)">
+    </div>
+  </form>
+</div>
+
