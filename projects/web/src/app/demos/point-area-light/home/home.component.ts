@@ -110,10 +110,10 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         scene.add(knot);
         this.objects.push(knot);
         // point light
-        const pointLight = new PointLight(0xffff00, 0.5, 100, 0.5);
+        const pointLight = new PointLight(0xffff00, 0.5, 20, 0.5);
         pointLight.position.set(0, 10, 0);
         const pointLightMesh = new Mesh(
-            new BoxBufferGeometry(0.1, 0.1, 0.1),
+            new BoxBufferGeometry(0.2, 0.2, 0.2),
             new MeshBasicMaterial({ color: 0xffff00 })
         );
         pointLight.add(pointLightMesh);
@@ -142,6 +142,40 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         this.rectLight.position.set(lx, ly, lz);
         this.rectLight.lookAt(0, 0, 0);
         this.pointLight.position.y = 10.0 + 5.0 * Math.sin(t);
+    }
+
+    public setPointLightColor(el: HTMLInputElement): void {
+        this.ngZone.runOutsideAngular(() => {
+            this.pointLight.color.setStyle(el.value);
+            const mesh = this.pointLight.children[0] as Mesh;
+            const mat = mesh.material as MeshBasicMaterial;
+            mat.color.copy(this.pointLight.color)
+                .multiplyScalar(this.pointLight.intensity);
+        });
+    }
+
+    public setRectLightColor(el: HTMLInputElement): void {
+        this.ngZone.runOutsideAngular(() => {
+            this.rectLight.color.setStyle(el.value);
+            const mesh = this.rectLight.children[0] as Mesh;
+            const mat = mesh.material as MeshBasicMaterial;
+            mat.color.copy(this.rectLight.color)
+                .multiplyScalar(this.rectLight.intensity);
+        });
+    }
+
+    public setPointLightPenumbra(el: HTMLInputElement): void {
+        this.ngZone.runOutsideAngular(() => {
+            const val = el.valueAsNumber / 100.0;
+            this.pointLight.intensity = val;
+        });
+    }
+
+    public setRectLightPenumbra(el: HTMLInputElement): void {
+        this.ngZone.runOutsideAngular(() => {
+            const val = el.valueAsNumber / 100.0;
+            this.rectLight.intensity = val;
+        });
     }
 
 }

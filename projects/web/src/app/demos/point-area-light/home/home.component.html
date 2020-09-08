@@ -1,1 +1,27 @@
-<p>home works!</p>
+<div class="card m-2">
+  <div class="card-header">
+    Point and Area Light
+  </div>
+  <form class="card-body">
+    <div class="form-group">
+      <label for="point-light-color">Point light color</label>
+      <input class="form-control" id="point-light-color" type="color" value="#ffff00" #pointLightColor
+        (change)="setPointLightColor(pointLightColor)">
+    </div>
+    <div class="form-group">
+      <label for="pointLightIntensity">Point light intensity:</label>
+      <input class="form-control-range" id="pointLightIntensity" type="range" #pointLightIntensity
+        [min]="0" [step]="1" [max]="400" (change)="setPointLightPenumbra(pointLightIntensity)">
+    </div>
+    <div class="form-group">
+      <label for="rect-light-color">Area light color</label>
+      <input class="form-control" id="rect-light-color" type="color" value="#ffffff" #rectLightColor
+        (change)="setRectLightColor(rectLightColor)">
+    </div>
+    <div class="form-group">
+      <label for="rectLightIntensity">Rect light intensity:</label>
+      <input class="form-control-range" id="rectLightIntensity" type="range" #rectLightIntensity
+        [min]="0" [step]="1" [max]="400" (change)="setRectLightPenumbra(rectLightIntensity)">
+    </div>
+  </form>
+</div>
