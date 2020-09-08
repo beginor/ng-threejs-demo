@@ -8,7 +8,7 @@ import {
 import { RenderService, Updatable } from '../../../services/render.service';
 
 @Component({
-    selector: 'app-demos-spot-light-home',
+    selector: 'app-demos-spotlight-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
