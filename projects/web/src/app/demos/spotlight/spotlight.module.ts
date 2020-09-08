@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SpotLightRoutingModule } from './spot-light-routing.module';
+import { SpotLightRoutingModule } from './spotlight-routing.module';
 import { HomeComponent } from './home/home.component';
 
 
