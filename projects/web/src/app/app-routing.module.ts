@@ -29,6 +29,10 @@ const routes: Routes = [
     {
         path: 'spotlight',
         loadChildren: () => import('./demos/spotlight/spotlight.module').then(m => m.SpotLightModule)
+    },
+    {
+        path: 'point-area-light',
+        loadChildren: () => import('./demos/point-area-light/point-area-light.module').then(m => m.PointAreaLightModule)
     }
 ];
 // tslint:enable: max-line-length
