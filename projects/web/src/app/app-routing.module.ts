@@ -27,7 +27,7 @@ const routes: Routes = [
         loadChildren: () => import('./demos/shader02/shader02.module').then(m => m.Shader02Module)
     },
     {
-        path: 'spot-light',
+        path: 'spotlight',
         loadChildren: () => import('./demos/spotlight/spotlight.module').then(m => m.SpotLightModule)
     }
 ];
