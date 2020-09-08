@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LightRoutingModule } from './light-routing.module';
+import { SpotLightRoutingModule } from './spot-light-routing.module';
 import { HomeComponent } from './home/home.component';
 
 
@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
     declarations: [HomeComponent],
     imports: [
         CommonModule,
-        LightRoutingModule
+        SpotLightRoutingModule
     ]
 })
-export class LightModule { }
+export class SpotLightModule { }

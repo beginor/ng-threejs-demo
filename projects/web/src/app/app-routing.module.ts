@@ -27,8 +27,8 @@ const routes: Routes = [
         loadChildren: () => import('./demos/shader02/shader02.module').then(m => m.Shader02Module)
     },
     {
-        path: 'light',
-        loadChildren: () => import('./demos/light/light.module').then(m => m.LightModule)
+        path: 'spot-light',
+        loadChildren: () => import('./demos/spot-light/spot-light.module').then(m => m.SpotLightModule)
     }
 ];
 // tslint:enable: max-line-length
