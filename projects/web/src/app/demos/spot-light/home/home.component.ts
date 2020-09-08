@@ -81,7 +81,6 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         spotlight.decay = 0.5;
         spotlight.shadow.camera.near = 10;
         spotlight.shadow.camera.far = 60;
-
         this.objects.push(spotlight);
         scene.add(spotlight);
         this.spotLight = spotlight;
