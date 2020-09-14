@@ -33,6 +33,10 @@ const routes: Routes = [
     {
         path: 'point-area-light',
         loadChildren: () => import('./demos/point-area-light/point-area-light.module').then(m => m.PointAreaLightModule)
+    },
+    {
+        path: 'points',
+        loadChildren: () => import('./demos/points/points.module').then(m => m.PointsModule)
     }
 ];
 // tslint:enable: max-line-length
