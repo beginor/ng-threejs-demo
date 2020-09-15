@@ -37,6 +37,10 @@ const routes: Routes = [
     {
         path: 'points',
         loadChildren: () => import('./demos/points/points.module').then(m => m.PointsModule)
+    },
+    {
+        path: 'solar',
+        loadChildren: () => import('./demos/solar/solar.module').then(m => m.SolarModule)
     }
 ];
 // tslint:enable: max-line-length
