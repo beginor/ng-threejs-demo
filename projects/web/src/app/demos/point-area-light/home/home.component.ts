@@ -119,6 +119,7 @@ export class HomeComponent implements OnInit, OnDestroy, Updatable {
         pointLight.add(pointLightMesh);
         scene.add(pointLight);
         this.pointLight = pointLight;
+        this.objects.push(pointLight);
         //
         camera.position.set(0, 20, 35);
         this.rs.addUpdatable(this);
