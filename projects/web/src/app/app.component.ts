@@ -1,5 +1,5 @@
 import {
-    Component, ViewChild, ElementRef, AfterViewInit, OnDestroy
+    Component, ViewChild, ElementRef, AfterViewInit, OnDestroy, NgZone
 } from '@angular/core';
 
 import {
@@ -25,7 +25,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     public glView!: ElementRef<HTMLDivElement>;
 
     constructor(
-        private renderSvc: RenderService
+        private ngZone: NgZone,
+        private rs: RenderService
     ) { }
 
     public ngAfterViewInit(): void {
@@ -36,7 +37,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
             75,
             container.clientWidth / container.clientHeight,
             0.1,
-            10000
+            Number.MAX_SAFE_INTEGER
         );
         const controls = new OrbitControls(camera, container);
         const renderer = new WebGLRenderer({
@@ -69,30 +70,32 @@ export class AppComponent implements AfterViewInit, OnDestroy {
                 );
             }, 300);
         });
-        this.renderSvc.scene = scene;
-        this.renderSvc.camera = camera;
-        this.renderSvc.controls = controls;
-        this.renderSvc.renderer = renderer;
-        this.animate(0);
+        this.rs.scene = scene;
+        this.rs.camera = camera;
+        this.rs.controls = controls;
+        this.rs.renderer = renderer;
+        this.ngZone.runOutsideAngular(() => {
+            this.animate(0);
+        });
     }
 
     public ngOnDestroy(): void {
-        this.renderSvc.scene.dispose();
-        this.renderSvc.renderer.domElement.remove();
-        this.renderSvc.renderer.dispose();
+        this.rs.scene.dispose();
+        this.rs.renderer.domElement.remove();
+        this.rs.renderer.dispose();
     }
 
     private update(time: number): void {
-        this.renderSvc.update(time);
+        this.rs.update(time);
     }
 
     private animate(time: number): void {
         const callback = this.animate.bind(this);
         requestAnimationFrame(callback);
         this.update(time);
-        this.renderSvc.renderer.render(
-            this.renderSvc.scene,
-            this.renderSvc.camera
+        this.rs.renderer.render(
+            this.rs.scene,
+            this.rs.camera
         );
         this.stats.update();
     }
