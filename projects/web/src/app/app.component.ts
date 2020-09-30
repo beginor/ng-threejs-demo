@@ -42,9 +42,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         const controls = new OrbitControls(camera, container);
         const renderer = new WebGLRenderer({
             premultipliedAlpha: false,
-            antialias: true,
+            antialias: true
         });
-        // renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.autoClear = true;
+        renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(
             container.clientWidth,
             container.clientHeight
