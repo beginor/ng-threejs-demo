@@ -81,9 +81,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.rs.scene.dispose();
-        this.rs.renderer.domElement.remove();
+        this.rs.scene.clear();
         this.rs.renderer.dispose();
+        this.rs.renderer.domElement.remove();
     }
 
     private update(time: number): void {

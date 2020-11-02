@@ -57,7 +57,7 @@
     "bootstrap-icons": "^1.1.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "@fortawesome/fontawesome-free": "^5.13.1",
-    "three": "~0.120.0"
+    "three": "~0.122.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.0",
