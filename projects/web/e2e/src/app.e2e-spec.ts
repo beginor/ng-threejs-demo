@@ -8,9 +8,9 @@ describe('ng-threejs-demo App', () => {
         page = new AppPage();
     });
 
-    it('should display Navbar Brand', () => {
-        page.navigateTo();
-        expect(page.getNavbarBrand()).toContain('Three.js demos');
+    it('should display Navbar Brand', async () => {
+        await page.navigateTo();
+        expect(await page.getNavbarBrand()).toContain('Three.js demos');
     });
 
 });
